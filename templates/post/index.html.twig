@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block metatitle %}{{post.name}}{% endblock %}
+{% block metadescriptions %}{{post.metaDescription}}{% endblock %}
+
+{% block body %}
+
+<section class="pb-20 pt-8">
+  <div class="container px-4 mx-auto">
+    <div class="h-96 mb-16">
+      <img class="w-full h-full object-cover rounded-lg" src="{{asset('./images/posts/')}}{{post.image}}" alt="{{post.name}}">
+    </div>
+    <div class="text-center">
+      <h1 class="mb-6 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight font-bold font-heading">{{post.name}}</h1>
+    </div>
+    <div class="max-w-2xl mx-auto pt-12 text-justify">
+        {{post.content|raw}}
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

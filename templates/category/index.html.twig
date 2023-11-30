@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block metatitle %}{{category.metaTitle}}{% endblock %}
+{% block metadescriptions %}{{category.metaDescription}}{% endblock %}
+
+{% block body %}
+<section>
+    <h1 class="bg-primary text-white text-4xl text-center p-8 mb-8">{{category.name}}</h1>
+    <div class="container mx-auto p-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">    
+    {% for post in category.posts %}
+        <div>
+        <a class="flex flex-col group bg-white border shadow-sm rounded-xl overflow-hidden hover:shadow-lg transition" href="{{path('post', {'slug':post.slug})}}">
+  <div class="relative pt-[50%] sm:pt-[60%] lg:pt-[80%] rounded-t-xl overflow-hidden">
+    <img class="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out rounded-t-xl" src="{{asset('./images/posts/')}}{{post.image}}" alt="{{post.name}}">
+  </div>
+  <div class="p-4 md:p-5">
+    <h3 class="text-lg font-bold text-gray-800">
+      {{post.name}}
+    </h3>
+    <p class="mt-1 text-gray-500">
+      {{post.metaDescription}}
+    </p>
+  </div>
+</a>
+        </div>  
+    {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}
